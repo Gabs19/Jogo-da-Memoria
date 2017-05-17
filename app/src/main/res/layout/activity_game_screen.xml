@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.god.jogodamemoria.GameScreen"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <Button
+        android:id="@+id/Jogar"
+        android:layout_width="237dp"
+        android:layout_height="86dp"
+        android:text="Jogar"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="101dp"
+        android:layout_marginTop="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/sobre"
+        android:layout_width="119dp"
+        android:layout_height="71dp"
+        android:text="Sobre"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="390dp"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/Jogar"
+        android:layout_alignLeft="@+id/Jogar"
+        android:layout_alignStart="@+id/Jogar" />
+
+</RelativeLayout>
