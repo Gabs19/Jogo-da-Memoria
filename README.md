@@ -42,4 +42,4 @@ Este projeto é financiado pelo PIBEX Técnico/IFPE, desde Fevereiro de 2017 e t
 
 ### Licença MIT
  
-O Jogo da Memória é lançado sob a Licença MTI, que pode ser encontrada no arquivo LICENSE na raiz deste projeto.
+O Jogo da Memória é lançado sob a Licença MIT, que pode ser encontrada no arquivo LICENSE na raiz deste projeto.
