@@ -13,15 +13,15 @@ public class GameScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_screen);
 //
-//        Button Jogar = (Button) findViewById(R.id.Jogar);
-//
-//        Jogar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//           Intent game  = new Intent(GameScreen.this,);
-//                startActivity(game);
-//            }
-//        });
+        Button Jogar = (Button) findViewById(R.id.Jogar);
+
+        Jogar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+           Intent game  = new Intent(GameScreen.this,Game.class);
+                startActivity(game);
+            }
+        });
 
         Button sobre = (Button) findViewById(R.id.sobre);
 

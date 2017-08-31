@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 public class SplashScreen extends FragmentActivity implements Runnable{
 
     private ProgressBar rodinha;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
