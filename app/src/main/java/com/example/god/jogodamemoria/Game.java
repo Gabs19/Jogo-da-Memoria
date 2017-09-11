@@ -21,6 +21,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private ImageButton[][] imgBtn;
     private ImageButton btn;
     private GridLayout grid;
+    private CardInfo [][] cardInfo;
 
     /**
      * @param savedInstanceState
@@ -42,7 +43,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 imgBtn[i][j] = btn;
                 grid.addView(btn);
                 btn.setOnClickListener(this);
-
+                btn.setTag(cardInfo);
             }
         }
     }
@@ -50,13 +51,16 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v instanceof ImageButton) {
-            for (int i = 0; i < imgBtn.length; i++) {
+            ImageButton button = (ImageButton) v;
+            button.setImageResource(R.mipmap.ic_launcher_round);
+            Log.d("JOGO", button.getTag().toString());
+            /*for (int i = 0; i < imgBtn.length; i++) {
                 for (int j = 0; j < imgBtn[i].length; j++) {
                     if (imgBtn[i][j].isPressed()) {
                         imgBtn[i][j].setImageResource(R.mipmap.ic_launcher_round);
                     }
                 }
-            }
+            }*/
         }
     }
 }

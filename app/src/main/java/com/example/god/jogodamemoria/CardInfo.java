@@ -7,38 +7,36 @@ import android.graphics.Bitmap;
  */
 
 public class CardInfo {
+    private int type;
+    private int resource;
 
-                                private Bitmap image;
-                                private String descripition;
-                                private String title;
+    public CardInfo(int type, int resource) {
+        this.type = type;
+        this.resource = resource;
+    }
 
-                                public CardInfo(Bitmap image, String descripition, String title) {
-                                    this.image = image;
-                                    this.descripition = descripition;
-                                    this.title = title;
-                                }
-                                    public void setTitle(String title) {
-                                        this.title = title;
-                                    }
+    public int getType() {
+        return type;
+    }
 
-                                public Bitmap getImage() {
-                                    return image;
-                                }
+    public void setType(int type) {
+        this.type = type;
+    }
 
-                                public void setImage(Bitmap image) {
-                                    this.image = image;
-                                }
+    public int getResource() {
+        return resource;
+    }
 
-                                public String getDescripition() {
-                                    return descripition;
-                                }
+    public void setResource(int resource) {
+        this.resource = resource;
+    }
+/**
+     *
+     * @param resource
+     * @param type
+     */
 
-                                public void setDescripition(String descripition) {
-                                    this.descripition = descripition;
-                                }
-                                public String getTitle() {
-                                    return title;
-                                }
+
 
 
 }
