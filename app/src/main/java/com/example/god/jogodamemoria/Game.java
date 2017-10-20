@@ -38,13 +38,11 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             for (int j = 0; j < imgBtn[i].length; j++) {
 
                 btn = new ImageButton(this);
-                btn.setImageResource(R.drawable.nvirada);
-                RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
-                btn.setLayoutParams(layoutParams);
+                btn.setImageResource(R.mipmap.ic_costas);
                 imgBtn[i][j] = btn;
                 grid.addView(btn);
                 btn.setOnClickListener(this);
-                cardInfo[i][j] = new CardInfo(j, R.drawable.nvirada);
+                cardInfo[i][j] = new CardInfo(j, R.mipmap.ic_costas);
                 btn.setTag(cardInfo[i][j]);
             }
         }
@@ -62,7 +60,6 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                 selected = button;
                 estado = Estado.VIRADA;
 
-
             } else if (estado == Estado.VIRADA) {
                 if (selected != button) {
                     CardInfo second = (CardInfo) button.getTag();
@@ -75,7 +72,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                         Toast toast = Toast.makeText(context,text,duration);
                         toast.show();
                     } else {
-                        selected.setImageResource(R.drawable.nvirada);
+                        selected.setImageResource(R.mipmap.ic_costas);
                         selected.setEnabled(true);
                     }
                 }
