@@ -1,6 +1,7 @@
 package com.example.god.jogodamemoria;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +13,23 @@ import android.widget.Toast;
 
 public class Game extends AppCompatActivity implements View.OnClickListener {
 
-    private ImageButton[][] imgBtn;
+    private ImageButton[] imgBtn;
 
     private ImageButton btn;
     private GridLayout grid;
-    private CardInfo[][] cardInfo;
+    //private CardInfo[] cardInfo;
     private ImageButton selected;
     public Estado estado;
+    public int resources[] = {
+            R.mipmap.calunga,
+            R.mipmap.capela_bjesus,
+            R.mipmap.capela_rosario,
+            R.mipmap.comes_damiao,
+            R.mipmap.coroa_aviao,
+            R.mipmap.refugio,
+            R.mipmap.sitio_marcos,
+            R.mipmap.velho_faceta
+    };///////
 
     /**
      * @param savedInstanceState
@@ -31,33 +42,33 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
         estado = Estado.NAO_VIRADA;
         grid = (GridLayout) findViewById(R.id.grid);
         grid.setColumnCount(8);
-        imgBtn = new ImageButton[4][8];
-        cardInfo = new CardInfo[4][8];
+        imgBtn = new ImageButton[16];
+        //cardInfo = new CardInfo[32];
 
         for (int i = 0; i < imgBtn.length; i++) {
-            for (int j = 0; j < imgBtn[i].length; j++) {
-
                 btn = new ImageButton(this);
                 btn.setImageResource(R.drawable.nvirada);
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(150, 150);
                 btn.setLayoutParams(layoutParams);
-                imgBtn[i][j] = btn;
+                imgBtn[i] = btn;
+
                 grid.addView(btn);
                 btn.setOnClickListener(this);
-                cardInfo[i][j] = new CardInfo(j, R.drawable.nvirada);
-                btn.setTag(cardInfo[i][j]);
+                btn.setTag(new CardInfo(resources[i % 8]));
             }
         }
-    }
+
 
     @Override
     public void onClick(View v) {
         if (v instanceof ImageButton) {
             ImageButton button = (ImageButton) v;
             Context context = getApplicationContext();
+            CardInfo cardInfo = (CardInfo) button.getTag();
+
 
             if (estado == Estado.NAO_VIRADA) {
-                button.setImageResource(R.mipmap.ic_launcher_round);
+                button.setImageResource(cardInfo.getResource());
                 button.setEnabled(false);
                 selected = button;
                 estado = Estado.VIRADA;
@@ -65,9 +76,8 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
             } else if (estado == Estado.VIRADA) {
                 if (selected != button) {
-                    CardInfo second = (CardInfo) button.getTag();
-                    if (((CardInfo) selected.getTag()).getType() == second.getType()) {
-                        button.setImageResource(R.mipmap.ic_launcher_round);
+                    if (((CardInfo) selected.getTag()).getResource() == cardInfo.getResource()) {
+                        button.setImageResource(cardInfo.getResource());
                         button.setEnabled(false);
                         CharSequence  text = "Você Acertou!!";
                         int duration  = Toast.LENGTH_SHORT;
@@ -75,7 +85,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
                         Toast toast = Toast.makeText(context,text,duration);
                         toast.show();
                     } else {
-                        selected.setImageResource(R.drawable.nvirada);
+                        selected.setImageResource(R.mipmap.ic_costas);
                         selected.setEnabled(true);
                     }
                 }

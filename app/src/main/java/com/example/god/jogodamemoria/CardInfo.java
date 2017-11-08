@@ -7,20 +7,10 @@ import android.graphics.Bitmap;
  */
 
 public class CardInfo {
-    private int type;
     private int resource;
 
-    public CardInfo(int type, int resource) {
-        this.type = type;
+    public CardInfo(int resource) {
         this.resource = resource;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public int getResource() {
