@@ -5,6 +5,8 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +21,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     private List<ImageButton> cards;
 
     private GridLayout grid;
-    private ImageButton selected;
+    private ImageButton oldCardButton;
     public Estado estado;
     public int resources[] = {
             R.mipmap.calunga,
@@ -41,7 +43,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
 
         estado = Estado.NAO_VIRADA;
         grid = (GridLayout) findViewById(R.id.grid);
-        grid.setColumnCount(8);
+        grid.setColumnCount(4);
 
         final int NUMBER_OF_CARDS = this.resources.length * 2;
 
@@ -57,7 +59,7 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             cards.add(btn);
         }
 
-//        Collections.shuffle(cards);
+        Collections.shuffle(cards);
 
         for(ImageButton button : this.cards ){
             grid.addView(button);
@@ -68,35 +70,46 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if (v instanceof ImageButton) {
-            ImageButton button = (ImageButton) v;
             Context context = getApplicationContext();
-            CardInfo cardInfo = (CardInfo) button.getTag();
+            final ImageButton newCardButton = (ImageButton) v;
+            CardInfo newCardInfo = (CardInfo) newCardButton.getTag();
+
+
 
 
             if (estado == Estado.NAO_VIRADA) {
-                button.setImageResource(cardInfo.getResource());
-                button.setEnabled(false);
-                selected = button;
+                newCardButton.setImageResource(newCardInfo.getResource());
+                newCardButton.setEnabled(false);
+                oldCardButton = newCardButton;
                 estado = Estado.VIRADA;
 
 
             } else if (estado == Estado.VIRADA) {
-                if (selected != button) {
-                    if (((CardInfo) selected.getTag()).getResource() == cardInfo.getResource()) {
-                        button.setImageResource(cardInfo.getResource());
-                        button.setEnabled(false);
+                if (oldCardButton != newCardButton) {
+                    if (((CardInfo) oldCardButton.getTag()).getResource() == newCardInfo.getResource()) {
+                        newCardButton.setImageResource(newCardInfo.getResource());
+                        newCardButton.setEnabled(false);
                         CharSequence  text = "Você Acertou!!";
                         int duration  = Toast.LENGTH_SHORT;
 
                         Toast toast = Toast.makeText(context,text,duration);
                         toast.show();
                     } else {
-                        selected.setImageResource(R.mipmap.ic_costas);
-                        selected.setEnabled(true);
+                        oldCardButton.setImageResource(R.mipmap.ic_costas);
+                        oldCardButton.setEnabled(true);
+
+                        newCardButton.setImageResource(newCardInfo.getResource());
+
+                        newCardButton.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                newCardButton.setImageResource(R.mipmap.ic_costas);
+                            }
+                        }, 1000);
                     }
                 }
                 estado = Estado.NAO_VIRADA;
-                selected = null;
+                oldCardButton = null;
 
                 CharSequence  text = "Você Errou!!";
                 int duration  = Toast.LENGTH_SHORT;
