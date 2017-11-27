@@ -74,13 +74,18 @@ public class Game extends AppCompatActivity implements View.OnClickListener {
             final ImageButton newCardButton = (ImageButton) v;
             CardInfo newCardInfo = (CardInfo) newCardButton.getTag();
 
-
-
-
             if (estado == Estado.NAO_VIRADA) {
                 newCardButton.setImageResource(newCardInfo.getResource());
                 newCardButton.setEnabled(false);
                 oldCardButton = newCardButton;
+
+//                oldCardButton.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        oldCardButton.setImageResource(R.mipmap.ic_costas);
+//                    }
+//                },1000);
+
                 estado = Estado.VIRADA;
 
 
