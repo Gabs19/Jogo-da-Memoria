@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.god.jogodamemoria.GameScreen"
     tools:layout_editor_absoluteY="81dp"
+    android:background="@drawable/fundomenu"
     tools:layout_editor_absoluteX="0dp">
 
     <GridLayout
