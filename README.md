@@ -32,7 +32,7 @@ O Jogo da Memória é Desenvolvido por Gabriel Lima e Gabriel Silva - Alunos do 
 
 Você poderá ajudar no projeto, reportando erros, bugs ou sugestões de novas funcionalidades para o App, envio-nos um email;
 
-Contato: Gabriel Silva (gabriel-silva_2011@hotmail.com) / Gabriel Lima (mugiwara.gl@gmail.com) 
+Contato: Gabriel Silva (gabriel-silva_2011@hotmail.com) / Gabriel Lima (gabriellima.glgs@gmail.com) 
  
 
 ### Quem financia o projeto?
